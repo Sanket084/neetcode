@@ -2,16 +2,35 @@
 
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        # Step 1: Count frequencies
-        freq = Counter(nums)
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
 
-        # Step 2: Sort elements by frequency and get the top k elements
-        most_common = freq.most_common(k)
+        for n in nums:
+            count[n] = 1 + count.get(n, 0)
+        for n, c in count.items():
+            freq[c].append(n)
         
-        # Step 3: Extract just the elements
-        result = [item[0] for item in most_common]
+        res = []
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
 
-        return result
+# This is the ChatGPT solution
+
+# class Solution:
+#     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+#         # Step 1: Count frequencies
+#         freq = Counter(nums)
+
+#         # Step 2: Sort elements by frequency and get the top k elements
+#         most_common = freq.most_common(k)
+        
+#         # Step 3: Extract just the elements
+#         result = [item[0] for item in most_common]
+
+#         return result
 
 
 
