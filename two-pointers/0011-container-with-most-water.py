@@ -20,6 +20,7 @@ class Solution:
 #         res = 0
 
 #         for L in range(len(height)):
-#             for R in range(l + 1, len(height)):
+#             for R in range(L + 1, len(height)):
 #                 area = (R - L) * min(height[L], height[R])
 #                 res = max(res, area)
+#         return res
